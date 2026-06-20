@@ -1,26 +1,294 @@
 @import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@custom-variant dark (&:is(.dark *));
+
+/* --------------------------------------------------------------------------
+   LUXORA DESIGN SYSTEM
+   Premium oral-care brand tokens: white, icy blue, deep navy, silver, soft gold
+   -------------------------------------------------------------------------- */
 
 @theme inline {
+  /* Core brand colors */
+  --color-luxora-white: #F8FBFF;
+  --color-luxora-ice: #EAF4FF;
+  --color-luxora-mist: #D9E9F8;
+  --color-luxora-blue: #3A8DFF;
+  --color-luxora-ribbon: #7DBBFF;
+  --color-luxora-navy: #061A35;
+  --color-luxora-midnight: #020B18;
+  --color-luxora-silver: #C8D3E2;
+  --color-luxora-chrome: #EDF4FF;
+  --color-luxora-gold: #C8A24A;
+  --color-luxora-soft-gold: #E6C978;
+
+  /* shadcn theme mapping */
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  /* Typography */
+  --font-sans: var(--font-inter);
+  --font-serif: var(--font-playfair);
+  --font-display: var(--font-cormorant);
   --font-mono: var(--font-geist-mono);
+
+  /* Radius */
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+:root {
+  --background: #F8FBFF;
+  --foreground: #061A35;
+  --card: #FFFFFF;
+  --card-foreground: #061A35;
+  --popover: #FFFFFF;
+  --popover-foreground: #061A35;
+  --primary: #061A35;
+  --primary-foreground: #F8FBFF;
+  --secondary: #EAF4FF;
+  --secondary-foreground: #061A35;
+  --muted: #D9E9F8;
+  --muted-foreground: #4A607A;
+  --accent: #3A8DFF;
+  --accent-foreground: #F8FBFF;
+  --destructive: #B42318;
+  --border: rgba(6, 26, 53, 0.10);
+  --input: rgba(6, 26, 53, 0.08);
+  --ring: #3A8DFF;
+  --radius: 0.75rem;
+}
+
+/* Semantic brand tokens as CSS variables for direct access */
+:root {
+  --luxora-white: #F8FBFF;
+  --luxora-ice: #EAF4FF;
+  --luxora-mist: #D9E9F8;
+  --luxora-blue: #3A8DFF;
+  --luxora-ribbon: #7DBBFF;
+  --luxora-navy: #061A35;
+  --luxora-midnight: #020B18;
+  --luxora-silver: #C8D3E2;
+  --luxora-chrome: #EDF4FF;
+  --luxora-gold: #C8A24A;
+  --luxora-soft-gold: #E6C978;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  html {
+    scroll-behavior: auto; /* Lenis handles smooth scroll */
+    @apply font-sans antialiased;
+  }
+  body {
+    @apply bg-luxora-white text-luxora-navy;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-serif tracking-tight;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* Premium selection color */
+::selection {
+  background: rgba(58, 141, 255, 0.18);
+  color: #061A35;
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   LUXORA UTILITY CLASSES
+   -------------------------------------------------------------------------- */
+
+@layer utilities {
+  /* Glass/frosted surfaces */
+  .glass {
+    background: rgba(255, 255, 255, 0.55);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+  }
+  .glass-dark {
+    background: rgba(6, 26, 53, 0.55);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+  .glass-navy {
+    background: rgba(6, 26, 53, 0.78);
+    backdrop-filter: blur(28px);
+    -webkit-backdrop-filter: blur(28px);
+    border: 1px solid rgba(255, 255, 255, 0.10);
+  }
+
+  /* Chrome metallic text gradient */
+  .text-chrome {
+    background: linear-gradient(
+      135deg,
+      #061A35 0%,
+      #4A607A 25%,
+      #C8D3E2 45%,
+      #EDF4FF 55%,
+      #4A607A 75%,
+      #061A35 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  /* Soft gold text gradient */
+  .text-gold {
+    background: linear-gradient(135deg, #C8A24A 0%, #E6C978 50%, #C8A24A 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  /* Blue ribbon glow */
+  .ribbon-glow {
+    filter: drop-shadow(0 0 18px rgba(58, 141, 255, 0.45))
+            drop-shadow(0 0 40px rgba(125, 187, 255, 0.25));
+  }
+
+  /* Premium soft shadow */
+  .shadow-luxury {
+    box-shadow:
+      0 2px 2px rgba(6, 26, 53, 0.02),
+      0 8px 24px rgba(6, 26, 53, 0.06),
+      0 24px 64px rgba(6, 26, 53, 0.08);
+  }
+
+  .shadow-luxury-hover {
+    box-shadow:
+      0 4px 8px rgba(6, 26, 53, 0.04),
+      0 16px 40px rgba(6, 26, 53, 0.10),
+      0 40px 96px rgba(6, 26, 53, 0.12);
+  }
+
+  /* Water reflection shimmer */
+  .shimmer {
+    background: linear-gradient(
+      105deg,
+      transparent 40%,
+      rgba(255, 255, 255, 0.45) 50%,
+      transparent 60%
+    );
+    background-size: 200% 200%;
+  }
+
+  /* Label style: uppercase, wide tracking */
+  .label-luxury {
+    @apply text-[11px] font-semibold uppercase tracking-[0.22em];
+  }
+
+  /* Hide scrollbar but keep functionality */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   KEYFRAME ANIMATIONS
+   -------------------------------------------------------------------------- */
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-14px); }
+}
+
+@keyframes floatSlow {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-22px) rotate(2deg); }
+}
+
+@keyframes sweepLight {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+@keyframes ribbonFlow {
+  0% { transform: translateX(-8%) rotate(0deg); }
+  50% { transform: translateX(4%) rotate(2deg); }
+  100% { transform: translateX(-8%) rotate(0deg); }
+}
+
+@keyframes sparkle {
+  0%, 100% { opacity: 0; transform: scale(0.6); }
+  50% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes pulseGlow {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+
+@keyframes lightMove {
+  0% { transform: translateX(-30%) translateY(-10%) rotate(0deg); opacity: 0.4; }
+  50% { transform: translateX(30%) translateY(10%) rotate(10deg); opacity: 0.7; }
+  100% { transform: translateX(-30%) translateY(-10%) rotate(0deg); opacity: 0.4; }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-float-slow {
+  animation: floatSlow 10s ease-in-out infinite;
+}
+
+.animate-sweep {
+  animation: sweepLight 4s linear infinite;
+}
+
+.animate-ribbon {
+  animation: ribbonFlow 12s ease-in-out infinite;
+}
+
+.animate-sparkle {
+  animation: sparkle 3s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulseGlow 4s ease-in-out infinite;
+}
+
+.animate-light-move {
+  animation: lightMove 20s ease-in-out infinite;
 }

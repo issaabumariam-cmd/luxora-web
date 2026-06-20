@@ -19,6 +19,14 @@
 
 # production
 /build
+/dist-export
+
+# dev logs
+dev-server.log
+
+# generated verification artifacts
+/scripts/comparison/
+/scripts/screenshots/
 
 # misc
 .DS_Store

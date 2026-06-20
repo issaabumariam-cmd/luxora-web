@@ -1,36 +1,128 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# LUXORA — Premium Oral Care Landing Page
+
+A cinematic, production-ready animated landing page for LUXORA, a luxury oral-care brand. Built with Next.js 16, React 19, TypeScript, Tailwind CSS v4, Framer Motion, shadcn/ui, and Lenis smooth scroll.
+
+## Visual Direction
+
+Inspired by the reference images in `/public/assets/luxora/`:
+
+- `hero-logo-reference.png` — chrome tooth emblem, blue glowing ribbon, floating strips, frosted background
+- `combo-packaging-reference.jpeg` — The Perfect Duo packaging, navy + white + gold accents
+- `dental-care-kit-reference.png` — complete care kit tray, toothbrush + floss + picks, 3/5 stat
+- `manual-care-kit-reference.jpeg` — manual care kit, comparison table, premium product layout
+
+These images were used as art direction; real products were extracted with AI background removal and rebuilt as a responsive web experience with glassmorphism and premium motion.
+
+## Sections
+
+1. Hero
+2. Product Showcase
+3. The Perfect Duo
+4. What Really Matters
+5. Complete Care Kit
+6. Manual Care Kit
+7. Why Luxora
+8. Daily Ritual
+9. Final CTA
+10. Footer
+
+## Tech Stack
+
+- Next.js 14+ (currently 16.2.9)
+- React 19
+- TypeScript 5
+- Tailwind CSS v4
+- Framer Motion
+- shadcn/ui (base-nova)
+- Lenis smooth scroll
+- Lucide icons
+- Google Fonts (Playfair Display, Inter, Cormorant Garamond)
 
 ## Getting Started
 
-First, run the development server:
-
 ```bash
+# Install dependencies
+npm install
+
+# Run development server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+
+# Build for production
+npm run build
+
+# The static export will be placed in ./dist-export
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) after running `npm run dev`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Project Structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+app/
+  globals.css        # Luxora design system tokens + utilities
+  layout.tsx         # Fonts, metadata, Lenis provider
+  page.tsx           # Landing page composition
+components/
+  luxora/            # Reusable brand components
+  sections/          # 10 landing page sections
+  ui/                # shadcn/ui primitives
+public/
+  assets/luxora/     # Reference images
+```
 
-## Learn More
+## Key Components
 
-To learn more about Next.js, take a look at the following resources:
+- `LuxoraLogo` — serif wordmark
+- `ChromeToothLogo` — animated metallic tooth + blue ribbon
+- `BlueRibbon` — flowing ribbon accent
+- `SparkleField` — premium sparkle particles
+- `GlassCard` — frosted glass surface
+- `ProductCard` — product showcase card with hover shine
+- `BenefitIcon` — circular benefit icon
+- `SectionHeader` — reusable section header
+- `PremiumButton` — magnetic CTA with sweep animation
+- `AnimatedStat` — scroll-triggered number counter
+- `ProductTray` — deep navy product tray
+- `ComparisonTable` — elegant Manual vs Electronic table
+- `RitualTimeline` — 3-step timeline with ribbon progress
+- `LuxuryCTA` — final conversion section
+- `Footer` — premium footer with disclaimer
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Design Tokens
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Colors:
 
-## Deploy on Vercel
+- `--luxora-white: #F8FBFF`
+- `--luxora-ice: #EAF4FF`
+- `--luxora-mist: #D9E9F8`
+- `--luxora-blue: #3A8DFF`
+- `--luxora-ribbon: #7DBBFF`
+- `--luxora-navy: #061A35`
+- `--luxora-midnight: #020B18`
+- `--luxora-silver: #C8D3E2`
+- `--luxora-chrome: #EDF4FF`
+- `--luxora-gold: #C8A24A`
+- `--luxora-soft-gold: #E6C978`
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Typography:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Headings: Playfair Display
+- Body: Inter
+- Accent: Cormorant Garamond
+
+## Accessibility
+
+- Semantic HTML
+- Proper heading hierarchy
+- Alt text on key visuals
+- Keyboard-accessible buttons/links
+- `prefers-reduced-motion` support across animations
+- Smooth scroll via Lenis (disabled when reduced motion is preferred)
+
+## Disclaimer
+
+Luxora products are cosmetic and oral-care products. Results may vary. Always follow product instructions and consult a dental professional for specific dental concerns.
+
+---
+
+Built with care for LUXORA.
