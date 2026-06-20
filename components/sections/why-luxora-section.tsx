@@ -4,13 +4,17 @@ import { Shield, Stethoscope, Heart, FlaskConical, Activity, Lock } from "lucide
 import { motion, useReducedMotion } from "framer-motion";
 import { SectionHeader } from "@/components/luxora/section-header";
 import { SparkleField } from "@/components/luxora/sparkle-field";
+import { useIsTouch } from "@/hooks/use-is-touch";
+import { cn } from "@/lib/utils";
 
 /**
  * WhyLuxoraSection
  * Trust point cards: glass surfaces, soft blue glow, premium icons.
+ * Hover glow disabled on touch to save GPU.
  */
 export function WhyLuxoraSection() {
   const shouldReduceMotion = useReducedMotion();
+  const isTouch = useIsTouch();
 
   const trustPoints = [
     {
@@ -76,7 +80,10 @@ export function WhyLuxoraSection() {
               }}
             >
               {/* Soft blue glow on hover */}
-              <div className="pointer-events-none absolute -right-8 -top-8 h-32 w-32 rounded-full bg-luxora-blue/20 opacity-0 blur-2xl transition-opacity duration-500 group-hover:opacity-100" />
+              <div className={cn(
+                "pointer-events-none absolute -right-8 -top-8 h-32 w-32 rounded-full bg-luxora-blue/20 blur-2xl transition-opacity duration-500 group-hover:opacity-100",
+                isTouch ? "opacity-0" : "opacity-0"
+              )} />
 
               <div className="relative z-10 flex flex-col gap-4">
                 <div className="flex h-12 w-12 items-center justify-center rounded-full border border-white/15 bg-white/10 text-luxora-soft-gold">

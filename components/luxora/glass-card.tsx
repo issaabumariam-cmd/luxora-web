@@ -2,11 +2,13 @@
 
 import { ReactNode } from "react";
 import { motion, useReducedMotion } from "framer-motion";
+import { useIsTouch } from "@/hooks/use-is-touch";
 import { cn } from "@/lib/utils";
 
 /**
  * GlassCard
  * Frosted glass card with subtle shimmer and hover lift.
+ * Shimmer and hover lift are disabled on touch.
  */
 interface GlassCardProps {
   children: ReactNode;
@@ -24,6 +26,7 @@ export function GlassCard({
   shimmer = false,
 }: GlassCardProps) {
   const shouldReduceMotion = useReducedMotion();
+  const isTouch = useIsTouch();
 
   const variants = {
     light: "glass",
@@ -40,13 +43,13 @@ export function GlassCard({
         className
       )}
       whileHover={
-        hover && !shouldReduceMotion
+        hover && !shouldReduceMotion && !isTouch
           ? { y: -8, boxShadow: "0 32px 72px rgba(6,26,53,0.12)" }
           : {}
       }
       transition={{ duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }}
     >
-      {shimmer && (
+      {shimmer && !isTouch && (
         <div className="pointer-events-none absolute inset-0 -translate-x-full animate-sweep shimmer opacity-40" />
       )}
       <div className="relative z-10">{children}</div>

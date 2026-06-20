@@ -14,8 +14,10 @@ export function LenisProvider({ children }: { children: ReactNode }) {
     const prefersReducedMotion = window.matchMedia(
       "(prefers-reduced-motion: reduce)"
     ).matches;
+    const isTouch = window.matchMedia("(pointer: coarse)").matches;
 
-    if (prefersReducedMotion) return;
+    // Disable smooth scroll on touch devices to avoid jank and battery drain
+    if (prefersReducedMotion || isTouch) return;
 
     const lenis = new Lenis({
       duration: 1.2,

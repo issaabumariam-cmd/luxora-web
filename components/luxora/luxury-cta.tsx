@@ -4,6 +4,7 @@ import { SparkleField } from "@/components/luxora/sparkle-field";
 import { PremiumButton } from "@/components/luxora/premium-button";
 import { BlueRibbon } from "@/components/luxora/blue-ribbon";
 import { StaticImage } from "@/components/luxora/luxora-image";
+import { useIsTouch } from "@/hooks/use-is-touch";
 import { cn } from "@/lib/utils";
 import { motion, useReducedMotion } from "framer-motion";
 
@@ -27,6 +28,7 @@ export function LuxuryCTA({
   className,
 }: LuxuryCTAProps) {
   const shouldReduceMotion = useReducedMotion();
+  const isTouch = useIsTouch();
 
   return (
     <section
@@ -46,11 +48,11 @@ export function LuxuryCTA({
       <motion.div
         className="pointer-events-none absolute right-[-8%] top-1/2 w-[40vw] max-w-[420px] -translate-y-1/2 opacity-20 md:right-[5%] md:opacity-25"
         animate={
-          !shouldReduceMotion
+          !shouldReduceMotion && !isTouch
             ? { y: [0, -20, 0], rotate: [0, 3, 0] }
             : {}
         }
-        transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
+        transition={{ duration: isTouch ? 16 : 12, repeat: Infinity, ease: "easeInOut" }}
       >
         <StaticImage
           src="/assets/luxora/extracted/chrome-tooth-3d.png"

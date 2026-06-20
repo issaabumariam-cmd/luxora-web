@@ -4,6 +4,7 @@ import { motion, useReducedMotion } from "framer-motion";
 import { SparkleField } from "@/components/luxora/sparkle-field";
 import { PremiumButton } from "@/components/luxora/premium-button";
 import { StaticImage } from "@/components/luxora/luxora-image";
+import { useIsTouch } from "@/hooks/use-is-touch";
 import { cn } from "@/lib/utils";
 
 /**
@@ -13,6 +14,7 @@ import { cn } from "@/lib/utils";
  */
 export function HeroSection() {
   const shouldReduceMotion = useReducedMotion();
+  const isTouch = useIsTouch();
 
   return (
     <section className="relative flex min-h-screen items-center overflow-hidden pt-24">
@@ -41,7 +43,7 @@ export function HeroSection() {
       <div
         className={cn(
           "pointer-events-none absolute left-0 top-0 h-[120%] w-[60%] -translate-x-1/2 rounded-full opacity-30 blur-[100px]",
-          !shouldReduceMotion && "animate-light-move"
+          !shouldReduceMotion && !isTouch && "animate-light-move"
         )}
         style={{
           background:
@@ -135,12 +137,12 @@ export function HeroSection() {
             <motion.div
               className="absolute -bottom-6 left-1/2 w-[70%] -translate-x-1/2"
               animate={
-                !shouldReduceMotion
+                !shouldReduceMotion && !isTouch
                   ? { y: [0, -18, 0], rotate: [-2, 3, -2] }
                   : {}
               }
               transition={{
-                duration: 6,
+                duration: isTouch ? 10 : 6,
                 repeat: Infinity,
                 ease: "easeInOut",
                 delay: 0.4,

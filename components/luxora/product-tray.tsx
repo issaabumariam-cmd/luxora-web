@@ -2,6 +2,7 @@
 
 import { motion, useReducedMotion } from "framer-motion";
 import { LucideIcon } from "lucide-react";
+import { useIsTouch } from "@/hooks/use-is-touch";
 import { cn } from "@/lib/utils";
 
 interface TrayProduct {
@@ -22,6 +23,7 @@ interface ProductTrayProps {
 
 export function ProductTray({ products, className }: ProductTrayProps) {
   const shouldReduceMotion = useReducedMotion();
+  const isTouch = useIsTouch();
 
   return (
     <div
@@ -47,14 +49,14 @@ export function ProductTray({ products, className }: ProductTrayProps) {
               delay: i * 0.1,
               ease: [0.25, 0.46, 0.45, 0.94],
             }}
-            whileHover={
-              !shouldReduceMotion
-                ? { y: -8, backgroundColor: "rgba(255,255,255,0.1)" }
-                : {}
-            }
+              whileHover={
+                !shouldReduceMotion && !isTouch
+                  ? { y: -8, backgroundColor: "rgba(255,255,255,0.1)" }
+                  : {}
+              }
           >
             <div className="flex h-28 w-full items-center justify-center">
-              <div className="animate-float">{product.visual}</div>
+              <div className={cn(isTouch ? "" : "animate-float")}>{product.visual}</div>
             </div>
             <div className="flex flex-col gap-1">
               <span className="text-sm font-semibold uppercase tracking-wider text-white">

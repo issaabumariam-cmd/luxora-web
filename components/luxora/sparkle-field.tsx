@@ -2,12 +2,13 @@
 
 import { useMemo } from "react";
 import { motion, useReducedMotion } from "framer-motion";
+import { useIsTouch } from "@/hooks/use-is-touch";
 import { cn } from "@/lib/utils";
 
 /**
  * SparkleField
  * Soft sparkle particles floating in the background of a section.
- * Lightweight, deterministic pseudo-random placement.
+ * Disabled entirely on touch devices for performance.
  */
 interface SparkleFieldProps {
   className?: string;
@@ -23,6 +24,7 @@ export function SparkleField({
   density = "medium",
 }: SparkleFieldProps) {
   const shouldReduceMotion = useReducedMotion();
+  const isTouch = useIsTouch();
 
   const colors = {
     white: "rgba(255, 255, 255, 0.9)",
@@ -50,7 +52,7 @@ export function SparkleField({
     }));
   }, [count, multiplier]);
 
-  if (shouldReduceMotion) {
+  if (shouldReduceMotion || isTouch) {
     return null;
   }
 
