@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LUXORA — Project Handover Report</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --luxora-white: #F8FBFF;
+      --luxora-ice: #EAF4FF;
+      --luxora-mist: #D9E9F8;
+      --luxora-blue: #3A8DFF;
+      --luxora-ribbon: #7DBBFF;
+      --luxora-navy: #061A35;
+      --luxora-midnight: #020B18;
+      --luxora-silver: #C8D3E2;
+      --luxora-chrome: #EDF4FF;
+      --luxora-gold: #C8A24A;
+      --luxora-soft-gold: #E6C978;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: var(--luxora-white);
+      color: var(--luxora-navy);
+      line-height: 1.65;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+    h1, h2, h3, h4 { font-family: 'Playfair Display', serif; margin: 0 0 0.6em; letter-spacing: -0.01em; }
+    a { color: var(--luxora-blue); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .page {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 48px 32px;
+    }
+    .cover {
+      text-align: center;
+      padding: 64px 32px;
+      background: linear-gradient(135deg, var(--luxora-navy) 0%, #0d2a4d 100%);
+      color: white;
+      border-radius: 20px;
+      margin-bottom: 48px;
+      position: relative;
+      overflow: hidden;
+    }
+    .cover::before {
+      content: '';
+      position: absolute;
+      top: -50%; right: -20%;
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, rgba(58,141,255,0.25) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+    .cover h1 {
+      font-size: 3rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 0.3em;
+    }
+    .cover p.subtitle {
+      font-size: 1.25rem;
+      color: var(--luxora-silver);
+      margin-bottom: 1.5em;
+    }
+    .cover .meta {
+      display: inline-flex;
+      gap: 24px;
+      flex-wrap: wrap;
+      justify-content: center;
+      font-size: 0.9rem;
+      color: var(--luxora-silver);
+    }
+    .cover .meta span { background: rgba(255,255,255,0.08); padding: 6px 14px; border-radius: 999px; }
+    .section { margin-bottom: 42px; }
+    .section h2 {
+      font-size: 1.6rem;
+      color: var(--luxora-navy);
+      border-bottom: 2px solid var(--luxora-gold);
+      padding-bottom: 10px;
+      margin-bottom: 22px;
+    }
+    .section h3 {
+      font-size: 1.2rem;
+      color: var(--luxora-navy);
+      margin-top: 24px;
+      margin-bottom: 10px;
+    }
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+    .card {
+      background: white;
+      border: 1px solid var(--luxora-mist);
+      border-radius: 16px;
+      padding: 22px;
+      box-shadow: 0 8px 32px rgba(6,26,53,0.05);
+    }
+    .card h4 { font-size: 1rem; color: var(--luxora-gold); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 10px; }
+    .badge {
+      display: inline-block;
+      background: var(--luxora-ice);
+      color: var(--luxora-navy);
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 999px;
+      margin-right: 6px;
+      margin-bottom: 6px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 12px;
+      font-size: 0.92rem;
+    }
+    th, td {
+      text-align: left;
+      padding: 12px 14px;
+      border-bottom: 1px solid var(--luxora-mist);
+    }
+    th {
+      background: var(--luxora-navy);
+      color: white;
+      font-weight: 500;
+    }
+    tr:nth-child(even) { background: var(--luxora-ice); }
+    .status-ok { color: #15803d; font-weight: 600; }
+    .status-warn { color: var(--luxora-gold); font-weight: 600; }
+    .links a {
+      display: inline-block;
+      background: var(--luxora-navy);
+      color: white;
+      padding: 10px 18px;
+      border-radius: 999px;
+      margin-right: 10px;
+      margin-bottom: 10px;
+      font-size: 0.9rem;
+    }
+    .links a:hover { background: var(--luxora-blue); text-decoration: none; }
+    ul { padding-left: 20px; }
+    li { margin-bottom: 8px; }
+    .footer-note {
+      margin-top: 48px;
+      padding-top: 24px;
+      border-top: 1px solid var(--luxora-mist);
+      font-size: 0.85rem;
+      color: var(--luxora-silver);
+      text-align: center;
+    }
+    @media (max-width: 720px) {
+      .grid-2 { grid-template-columns: 1fr; }
+      .cover h1 { font-size: 2rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="cover">
+      <h1>LUXORA</h1>
+      <p class="subtitle">Premium Oral Care Landing Page — Project Handover Report</p>
+      <div class="meta">
+        <span>Version 0.1.0</span>
+        <span>Stack: Next.js 16 · React 19 · Tailwind v4</span>
+        <span>Date: June 2026</span>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Executive Summary</h2>
+      <p>A cinematic, responsive, 10-section landing page was designed and built for the LUXORA premium oral-care brand. The page uses a luxury glass/chrome aesthetic inspired by the provided reference images, with real product photos extracted via an AI background-removal pipeline, scroll-driven animations via Framer Motion, smooth scrolling via Lenis, and is deployed on Vercel’s free Hobby plan.</p>
+      <div class="grid-2" style="margin-top:22px;">
+        <div class="card">
+          <h4>Live Site</h4>
+          <p><a href="https://dist-export-gamma.vercel.app" target="_blank">dist-export-gamma.vercel.app</a></p>
+          <p style="font-size:0.85rem; color:var(--luxora-silver);">Hosted on Vercel Hobby (free static hosting).</p>
+        </div>
+        <div class="card">
+          <h4>Source Code</h4>
+          <p><a href="https://github.com/issaabumariam-cmd/luxora-web" target="_blank">github.com/issaabumariam-cmd/luxora-web</a></p>
+          <p style="font-size:0.85rem; color:var(--luxora-silver);">Main branch tracked to origin/main.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>What Was Delivered</h2>
+      <div class="grid-2">
+        <div class="card">
+          <h4>10 Landing Sections</h4>
+          <ul>
+            <li>Hero</li>
+            <li>Product Showcase</li>
+            <li>The Perfect Duo</li>
+            <li>What Really Matters</li>
+            <li>Complete Care Kit</li>
+            <li>Manual Care Kit</li>
+            <li>Why Luxora</li>
+            <li>Daily Ritual</li>
+            <li>Final CTA</li>
+            <li>Footer</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h4>Design System</h4>
+          <ul>
+            <li>Custom color tokens (white, ice, navy, gold, silver, chrome)</li>
+            <li>Typography: Playfair Display, Inter, Cormorant</li>
+            <li>Glassmorphism utilities + premium shadows</li>
+            <li>Chrome + gold text gradients</li>
+            <li>Reduced-motion + touch-device support</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h4>Reusable Components</h4>
+          <ul>
+            <li>Navigation, Logo, PremiumButton, GlassCard</li>
+            <li>ProductCard, ProductTray, BenefitIcon</li>
+            <li>ChromeToothLogo, BlueRibbon, SparkleField</li>
+            <li>RitualTimeline, ComparisonTable, AnimatedStat</li>
+            <li>LuxuryCTA, Footer, LenisProvider</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h4>Asset Pipeline</h4>
+          <ul>
+            <li>Custom Python extraction script</li>
+            <li>Uses rembg BiRefNet (high-quality edges)</li>
+            <li>Alpha matting + edge cleaning</li>
+            <li>Pillow normalization for browser-safe PNGs</li>
+            <li>Playwright screenshot + comparison scripts</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Technology Stack</h2>
+      <p><span class="badge">Next.js 16.2.9</span><span class="badge">React 19.2.4</span><span class="badge">TypeScript 5</span><span class="badge">Tailwind CSS v4</span><span class="badge">Framer Motion 12.40.0</span><span class="badge">shadcn/ui base-nova</span><span class="badge">Lenis</span><span class="badge">Lucide React</span><span class="badge">Google Fonts</span></p>
+      <p style="margin-top:16px;">Static export configured to output into <code>dist-export/</code> to avoid conflicts with Next.js 16’s internal dev cache.</p>
+    </div>
+
+    <div class="section">
+      <h2>Build &amp; Quality Status</h2>
+      <table>
+        <tr><th>Check</th><th>Status</th><th>Notes</th></tr>
+        <tr><td>npm run lint</td><td class="status-ok">Passing</td><td>ESLint config valid, no errors</td></tr>
+        <tr><td>npm run build</td><td class="status-ok">Passing</td><td>Static export succeeds, dist-export/ generated</td></tr>
+        <tr><td>Visual QA (desktop)</td><td class="status-ok">Verified</td><td>Playwright full-page screenshot captured</td></tr>
+        <tr><td>Mobile performance</td><td class="status-ok">Optimized</td><td>Disabled heavy blur/particles/scroll on touch devices</td></tr>
+        <tr><td>Accessibility</td><td class="status-warn">Partial</td><td>Semantic HTML, alt text, reduced-motion support; full WCAG audit not run</td></tr>
+        <tr><td>SEO / Metadata</td><td class="status-ok">Configured</td><td>Title, description, keywords, OpenGraph in layout.tsx</td></tr>
+      </table>
+    </div>
+
+    <div class="section">
+      <h2>Deployment Details</h2>
+      <div class="grid-2">
+        <div class="card">
+          <h4>Vercel Project</h4>
+          <p><strong>Name:</strong> dist-export</p>
+          <p><strong>Plan:</strong> Hobby (free)</p>
+          <p><strong>Region:</strong> Washington, D.C. (iad1)</p>
+          <p><strong>Domain:</strong> <a href="https://dist-export-gamma.vercel.app" target="_blank">dist-export-gamma.vercel.app</a></p>
+          <p style="font-size:0.85rem; color:var(--luxora-silver); margin-top:10px;">You can rename the project to <code>luxora-web</code> and connect the GitHub repo for automatic deploys.</p>
+        </div>
+        <div class="card">
+          <h4>GitHub Repository</h4>
+          <p><strong>Owner:</strong> issaabumariam-cmd</p>
+          <p><strong>Repo:</strong> luxora-web</p>
+          <p><strong>Branch:</strong> main</p>
+          <p><strong>Latest commit:</strong> 8840965 (mobile performance optimization)</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Known Constraints &amp; Gotchas</h2>
+      <ul>
+        <li><strong>Reference image filenames are misleading.</strong> <code>hero-logo-reference.png</code> actually contains the care kit tray; <code>dental-care-kit-reference.png</code> contains the chrome tooth hero. Always verify image content by opening the file.</li>
+        <li><strong>Static export needs <code>images.unoptimized: true</code>.</strong> Next.js 16 still requires this for fully static export.</li>
+        <li><strong>Do not use <code>distDir: "dist"</code>.</strong> Next.js 16 dev server stores its cache under <code>dist/dev/</code>; the current config uses <code>dist-export/</code> to avoid collision.</li>
+        <li><strong>rembg BiRefNet model is ~973 MB.</strong> First extraction run downloads the model. Harmless Cholesky warnings may appear during alpha matting.</li>
+        <li><strong>Some extracted PNGs may need normalization.</strong> If images fail to render in the browser, run <code>python scripts/fix_pngs.py</code> to re-save them cleanly with Pillow.</li>
+        <li><strong>Keep cosmetic claims safe.</strong> Do not make unsubstantiated dental/medical claims. A disclaimer is included in the footer.</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>Open Items &amp; Next Steps</h2>
+      <table>
+        <tr><th>Priority</th><th>Item</th><th>Owner</th></tr>
+        <tr><td>P2</td><td>Rename Vercel project to <code>luxora-web</code> and connect GitHub for auto-deploys</td><td>Issa / Claude</td></tr>
+        <tr><td>P2</td><td>Run a full WCAG/accessibility audit and fix any contrast issues</td><td>Claude</td></tr>
+        <tr><td>P2</td><td>Add real shop/checkout integration or waitlist form</td><td>Issa / Claude</td></tr>
+        <tr><td>P2</td><td>Replace any remaining SVG placeholders with real photography if desired</td><td>Claude</td></tr>
+      </table>
+    </div>
+
+    <div class="section">
+      <h2>Useful Commands</h2>
+      <table>
+        <tr><th>Command</th><th>Purpose</th></tr>
+        <tr><td><code>npm run dev</code></td><td>Start local dev server at http://localhost:3000</td></tr>
+        <tr><td><code>npm run build</code></td><td>Static export to dist-export/</td></tr>
+        <tr><td><code>python scripts/extract_premium_fixed.py</code></td><td>Re-run AI background-removal asset extraction</td></tr>
+        <tr><td><code>python scripts/fix_pngs.py</code></td><td>Normalize extracted PNGs for browser decoding</td></tr>
+        <tr><td><code>python scripts/screenshot_site.py</code></td><td>Capture full-page Playwright screenshot</td></tr>
+        <tr><td><code>npx vercel@latest dist-export --prod --yes</code></td><td>Redeploy to Vercel production</td></tr>
+      </table>
+    </div>
+
+    <div class="section links">
+      <h2>Quick Links</h2>
+      <a href="https://dist-export-gamma.vercel.app" target="_blank">🌐 Live Site</a>
+      <a href="https://github.com/issaabumariam-cmd/luxora-web" target="_blank">📁 GitHub Repo</a>
+      <a href="https://vercel.com/amariam/dist-export" target="_blank">⚡ Vercel Dashboard</a>
+    </div>
+
+    <div class="footer-note">
+      Generated for LUXORA by Claude. Built with care in Amman, Jordan.
+    </div>
+  </div>
+</body>
+</html>
